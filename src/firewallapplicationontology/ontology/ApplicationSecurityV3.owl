@@ -1,0 +1,995 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.unesp.br/prof.ronaldo/"
+     xml:base="http://www.unesp.br/prof.ronaldo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:obda="https://w3id.org/obda/vocabulary#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+    <owl:Ontology rdf:about="http://www.unesp.br/prof.ronaldo/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/avoidedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/avoidedBy">
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Prevention"/>
+        <rdfs:comment>evitado por</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/effects -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/effects">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Assets"/>
+        <rdfs:comment>efeitos</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/exploitedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/exploitedBy">
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Vulnerability"/>
+        <rdfs:comment>explorado por</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/hasPermissionDataBase -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/hasPermissionDataBase">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtack"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Permissions"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/hasSqlInjection -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/hasSqlInjection">
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Vulnerability"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Active"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/hasSuspected -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/hasSuspected">
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerability"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Language"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/hasThreats -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/hasThreats">
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Vulnerability"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <rdfs:comment>tem ameaças</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/mitigatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/mitigatedBy">
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Countermeasure"/>
+        <rdfs:comment>mitigado por</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/resultingIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.unesp.br/prof.ronaldo/resultingIn">
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <rdfs:range rdf:resource="http://www.unesp.br/prof.ronaldo/Impact"/>
+        <rdfs:comment>resultando em</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/hasPermission -->
+
+    <owl:DatatypeProperty rdf:about="http://www.unesp.br/prof.ronaldo/hasPermission">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Permissions"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/regex -->
+
+    <owl:DatatypeProperty rdf:about="http://www.unesp.br/prof.ronaldo/regex">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Active"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Atack"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/CodeInjectionAtack"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/MalformedInputAtack"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtack"/>
+        <rdfs:domain rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Active -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Active">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <owl:disjointWith rdf:resource="http://www.unesp.br/prof.ronaldo/Passive"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Um ataque ativo tenta alterar os recursos do sistema ou afetar suas operações. O ataque ativo envolve alguma modificação no fluxo de dados ou a criação de declarações falsas.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/ApplicationServers -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/ApplicationServers">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/JavaPataform"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/PalataformVulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Assets -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Assets">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Atack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ativos</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/AssetsDataBase -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/AssetsDataBase">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Assets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/AssetsWebApplication -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/AssetsWebApplication">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Assets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/AssetsWebService -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/AssetsWebService">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Assets"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Atack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Atack"/>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/BruteForceAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/BruteForceAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Active"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Um ataque de força bruta é uma tentativa de quebrar uma senha ou nome de usuário ou encontrar uma página da Web oculta ou encontrar a chave usada para criptografar uma mensagem, usando uma abordagem de tentativa e erro e esperando, eventualmente, adivinhar corretamente.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/CodeInjectionAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/CodeInjectionAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/MalformedInputAtack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A injeção de código é a exploração de um bug do computador causado pelo processamento de dados inválidos. A injeção é usada por um invasor para introduzir (ou &quot;injetar&quot;) o código em um programa de computador vulnerável e alterar o curso da execução.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Countermeasure -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Countermeasure">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Atack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Contramedida - medida ou decisão que se destina a anular ou reduzir o efeito de uma medida anterior</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/CreateObjectionPermission -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/CreateObjectionPermission">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Permissions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DDL -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DDL">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Language"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Data Definition Language</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Data Manipulation LanguageData Manipulation Language</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DDLAlter -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DDLAlter">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/DDL"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DDLCreate -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DDLCreate">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/DDL"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DDLDrop -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DDLDrop">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/DDL"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DML -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DML">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Language"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Data Manipulation Language</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DMLDelete -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DMLDelete">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/DML"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DMLInsert -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DMLInsert">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/DML"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DMLUpdate -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DMLUpdate">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/DML"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DanielOfServiceAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DanielOfServiceAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Active"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DataBaseVulnerability -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DataBaseVulnerability">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Vulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DictionaryAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DictionaryAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/GuessingAtack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utiliza um dicionário de palavras para tentar adivinhar a senha</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/DisclosureAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/DisclosureAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Passive"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A divulgação da vulnerabilidade e como é realizada pode ser um problema controverso, porque os fornecedores preferem manter a vulnerabilidade em sigilo até que tenham um patch pronto para distribuir aos usuários. Por outro lado, pesquisadores e profissionais de segurança, bem como empresas cujos dados ou sistemas podem estar em risco, preferem que as divulgações sejam publicadas mais cedo.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/EavesdroppingAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/EavesdroppingAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Passive"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Um ataque de espionagem, também conhecido como ataque de sniffing ou snooping, é uma incursão em que alguém tenta roubar informações que computadores, smartphones ou outros dispositivos transmitem através de uma rede. Um ataque de espionagem aproveita as comunicações de rede não seguras para acessar os dados enviados e recebidos. Os ataques de espionagem são difíceis de detectar porque não fazem com que as transmissões de rede pareçam estar operando de maneira anormal</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Error-Page -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Error-Page">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/ApplicationServers"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/JavaPataform"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/PalataformVulnerability"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Web.xml"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/ExceptionDataBase -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/ExceptionDataBase">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/ApplicationServers"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Error-Page"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/JavaPataform"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/PalataformVulnerability"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Web.xml"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/ExecuteObjectPermission -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/ExecuteObjectPermission">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Permissions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Functions -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Functions">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/GuessingAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/GuessingAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/BruteForceAtack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Adivinhação de Senha</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/HTMLScriptingInjection -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/HTMLScriptingInjection">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/CodeInjectionAtack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Impact -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Impact">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Atack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impacto</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerability -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerability">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Vulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityBool -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityBool">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerability"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityBool"/>
+                    <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityString"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.unesp.br/prof.ronaldo/hasSqlInjection"/>
+                <owl:someValuesFrom rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackString"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityFloat -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityFloat">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerability"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityFloat"/>
+                    <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityInteger"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.unesp.br/prof.ronaldo/hasSqlInjection"/>
+                <owl:someValuesFrom rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackNumber"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityInteger -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityInteger">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerability"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityFloat"/>
+                    <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityInteger"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.unesp.br/prof.ronaldo/hasSqlInjection"/>
+                <owl:someValuesFrom rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackNumber"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityString -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityString">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerability"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityBool"/>
+                    <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityString"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.unesp.br/prof.ronaldo/hasSqlInjection"/>
+                <owl:someValuesFrom rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackString"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/JavaPataform -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/JavaPataform">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/PalataformVulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Language -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Language">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/AssetsDataBase"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/LossOfAvailability -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/LossOfAvailability">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Impact"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perda de disponibilidade</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/LossOfConfidentiality -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/LossOfConfidentiality">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Impact"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perda de Confidencialidade</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/LossOfIntegrity -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/LossOfIntegrity">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Impact"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perda de Integridade</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/MalformedInputAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/MalformedInputAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Active"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">O usuário pode enviar um arquivo malformado como entrada que é tratada normalmente em um aplicativo, mas é tóxica para o sistema receptor.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/ModificationDataPermission -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/ModificationDataPermission">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Permissions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/NoVulnerability -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/NoVulnerability"/>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Objects -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Objects">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/DataBaseVulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/PalataformVulnerability -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/PalataformVulnerability">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Vulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Passive -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Passive">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Threat"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Um ataque passivo tenta aprender ou utilizar as informações do sistema, mas não afeta os recursos do sistema. Os ataques passivos têm a natureza de escutar ou monitorar a transmissão. O objetivo do oponente é obter informações que estão sendo transmitidas.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/PasswordSniffingAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/PasswordSniffingAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/EavesdroppingAtack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A implementação típica de um ataque de detecção de senha envolve obter acesso a um computador conectado a uma rede local e instalar um sniffer de senha nele. O sniffer de senhas é um pequeno programa que escuta todo o tráfego nas redes conectadas, cria fluxos de dados a partir de pacotes TCP / IP e extrai nomes de usuário e senhas daqueles fluxos que contêm protocolos que enviam protocolos que enviam senhas em texto não criptografado. (Uma abordagem semelhante pode ser aplicada a outras credenciais.)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/PermissionDropObjectImp -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/PermissionDropObjectImp">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Permissions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Permissions -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Permissions">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/DataBaseVulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Prevention -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Prevention">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Atack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Procedures -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Procedures">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/SQLInjectionAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/SQLInjectionAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/CodeInjectionAtack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Um ataque de injeção SQL consiste na inserção ou &quot;injeção&quot; de uma consulta SQL por meio dos dados de entrada do cliente para o aplicativo. Uma exploração bem-sucedida de injeção SQL pode ler dados confidenciais do banco de dados, modificar dados (Inserir / Atualizar / Excluir), executar operações de administração no banco de dados (como desligar o DBMS), recuperar o conteúdo de um determinado arquivo presente no arquivo DBMS sistema e, em alguns casos, emita comandos para o sistema operacional. Os ataques de injeção SQL são um tipo de ataque de injeção, no qual os comandos SQL são injetados na entrada do plano de dados para efetuar a execução de comandos SQL predefinidos.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/SQLInjectionAtackNumber -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackNumber">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtack"/>
+        <owl:disjointWith rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackString"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/SQLInjectionAtackString -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackString">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/ScanningAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/ScanningAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/BruteForceAtack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uma varredura de porta é um ataque que envia solicitações de clientes para vários endereços de porta de servidor em um host, com o objetivo de encontrar uma porta ativa e explorar uma vulnerabilidade conhecida desse serviço.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/ScavengingAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/ScavengingAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Passive"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A eliminação é o processo de pesquisar resíduos de dados em um sistema ou rede para obter conhecimento não autorizado de informações confidenciais.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/SelectDataPermission -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/SelectDataPermission">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Permissions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/SideChannelAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/SideChannelAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Passive"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Um ataque de canal lateral quebra a criptografia usando as informações vazadas pela criptografia, como o monitoramento da radiação do campo eletromagnético (EMF) emitida pela tela do computador para visualizar as informações antes de serem criptografadas em um ataque de phreaking de van Eck, também conhecido como padrão de emanação de pulso eletromagnético transitório (TEMPEST). . Outros ataques bem conhecidos de canal lateral incluem a espionagem do consumo de energia de um dispositivo eletrônico para roubar uma chave de criptografia ou ataques acústicos que gravam o som dos pressionamentos de tecla de um usuário para roubar sua senha.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/StatisticalAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/StatisticalAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Passive"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Um ataque a um banco de dados ao qual os usuários têm acesso limitado: por exemplo, acesso para calcular informações como médias. Um ataque estatístico usa essas informações para descobrir dados secretos. Por exemplo, um banco de dados contendo detalhes de funcionários pode ser usado por outras pessoas para calcular o salário médio de funcionários com base em critérios específicos. Se um usuário descobrir um critério que só vale para um funcionário e usar essas informações para encontrar o salário médio de todos os funcionários que possuem esse critério, o salário do funcionário poderá ser facilmente descoberto.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Tables -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Tables">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Threat -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Threat">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Atack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Threats and their concepts</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Views -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Views">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Objects"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Vulnerability -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Vulnerability">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/Atack"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vulnerabilities and their concepts</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/Web.xml -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/Web.xml">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/ApplicationServers"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/JavaPataform"/>
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/PalataformVulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/XSSAtack -->
+
+    <owl:Class rdf:about="http://www.unesp.br/prof.ronaldo/XSSAtack">
+        <rdfs:subClassOf rdf:resource="http://www.unesp.br/prof.ronaldo/HTMLScriptingInjection"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Os ataques de cross-site scripting (XSS) são um tipo de injeção, na qual scripts maliciosos são injetados em sites de outra forma benignos e confiáveis. Os ataques XSS ocorrem quando um invasor usa um aplicativo da Web para enviar código malicioso, geralmente na forma de um script do lado do navegador, para um usuário final diferente. As falhas que permitem que esses ataques sejam bem-sucedidos são bastante difundidas e ocorrem em qualquer lugar em que um aplicativo Web use entrada de um usuário na saída gerada sem validá-lo ou codificá-lo.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/AtackSQLInjectionNumerico -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionNumerico">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackNumber"/>
+        <regex rdf:datatype="http://www.w3.org/2001/XMLSchema#string">\d*</regex>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextDELETE -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextDELETE">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackString"/>
+        <hasPermissionDataBase rdf:resource="http://www.unesp.br/prof.ronaldo/PermissionModificationDataImp"/>
+        <regex rdf:datatype="http://www.w3.org/2001/XMLSchema#string">((D|d)(E|e)(L|l)(E|e)(T|t)(E|e))((\/\*.{0,}\*\/)|(\s))+((F|f)(R|r)(O|o)(M|m))((\/\*.{0,}\*\/)|(\s))+([A-Z]|[a-z]|_|[0-9])+</regex>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextDROP -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextDROP">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackString"/>
+        <hasPermissionDataBase rdf:resource="http://www.unesp.br/prof.ronaldo/PermissionDropObjectImp"/>
+        <regex rdf:datatype="http://www.w3.org/2001/XMLSchema#string">((D|d)(R|r)(O|o)(P|p))((\/\*.{0,}\*\/)|(\s))+([A-Z]|[a-z]|_|[0-9])+</regex>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextUPDATE -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextUPDATE">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/SQLInjectionAtackString"/>
+        <hasPermissionDataBase rdf:resource="http://www.unesp.br/prof.ronaldo/PermissionModificationDataImp"/>
+        <regex rdf:datatype="http://www.w3.org/2001/XMLSchema#string">((U|u)(P|p)(D|d)(A|a)(T|t)(E|e))((\/\*.{0,}\*\/)|(\s))+([A-Z]|[a-z]|_|[0-9])+</regex>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityBoolImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityBoolImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityBool"/>
+        <hasSqlInjection rdf:resource="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextDELETE"/>
+        <hasSqlInjection rdf:resource="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextDROP"/>
+        <hasSqlInjection rdf:resource="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextUPDATE"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityFloatImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityFloatImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityFloat"/>
+        <hasSqlInjection rdf:resource="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionNumerico"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityIntegerImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityIntegerImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityInteger"/>
+        <hasSqlInjection rdf:resource="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionNumerico"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityStringImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityStringImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityString"/>
+        <hasSqlInjection rdf:resource="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextDELETE"/>
+        <hasSqlInjection rdf:resource="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextDROP"/>
+        <hasSqlInjection rdf:resource="http://www.unesp.br/prof.ronaldo/AtackSQLInjectionTextUPDATE"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/PermissionCreateObjectionImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/PermissionCreateObjectionImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/CreateObjectionPermission"/>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CREATE</hasPermission>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CREATE ROUTINE</hasPermission>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CREATE VIEW</hasPermission>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/PermissionDropObjectImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/PermissionDropObjectImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/PermissionDropObjectImp"/>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DROP</hasPermission>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/PermissionExecuteObjectImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/PermissionExecuteObjectImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/ExecuteObjectPermission"/>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EXECUTE</hasPermission>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/PermissionModificationDataImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/PermissionModificationDataImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/ModificationDataPermission"/>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DELETE</hasPermission>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">INSERT</hasPermission>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UPDATE</hasPermission>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.unesp.br/prof.ronaldo/PermissionSelectDataImp -->
+
+    <owl:NamedIndividual rdf:about="http://www.unesp.br/prof.ronaldo/PermissionSelectDataImp">
+        <rdf:type rdf:resource="http://www.unesp.br/prof.ronaldo/SelectDataPermission"/>
+        <hasPermission rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SELECT</hasPermission>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/AssetsDataBase"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/AssetsWebApplication"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/AssetsWebService"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/BruteForceAtack"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/DanielOfServiceAtack"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/MalformedInputAtack"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/DisclosureAtack"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/EavesdroppingAtack"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/ScavengingAtack"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/SideChannelAtack"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/StatisticalAtack"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityBool"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityFloat"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityInteger"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/InputURLVulnerabilityString"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/LossOfAvailability"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/LossOfConfidentiality"/>
+            <rdf:Description rdf:about="http://www.unesp.br/prof.ronaldo/LossOfIntegrity"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
