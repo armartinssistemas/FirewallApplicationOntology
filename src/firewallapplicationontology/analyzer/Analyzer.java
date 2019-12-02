@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package firewallapplicationontology.database.analyzer;
+package firewallapplicationontology.analyzer;
 
 import com.mysql.cj.xdevapi.DatabaseObject;
 import firewallapplicationontology.database.ObjectDataBase;

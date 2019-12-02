@@ -5,9 +5,9 @@
  */
 package firewallapplicationontology.report;
 
-import firewallapplicationontology.database.analyzer.Result;
-import firewallapplicationontology.database.analyzer.Summary;
-import firewallapplicationontology.database.analyzer.SummaryItem;
+import firewallapplicationontology.analyzer.Result;
+import firewallapplicationontology.analyzer.Summary;
+import firewallapplicationontology.analyzer.SummaryItem;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
