@@ -61,10 +61,9 @@ public class Main {
         List<Input> inputs = ParserInputs.getInputs("D:\\\\Documentos\\\\Mestrado\\\\InteligenciaArtifical\\\\Ontologia\\\\TrabalhoFinal\\\\server.min.log_2019-07-05T16-20-03",
                                                             methods);
         
-        
         //Analiza e retorna Resultado e Resumo
         List<Result> results = Analyzer.analyzerResult(queryEngine, databaseObjects, inputs, methods);
-        Summary summary = Analyzer.analyzerSumary(results);
+        Summary summary = Analyzer.analyzerSummary(results);
         
         //Gera dados para visualização da informação
         Report.generateReport(summary, "C:\\wamp64\\www\\dashboard\\chart.json");

@@ -19,10 +19,6 @@ import org.json.simple.JSONObject;
  * @author Prof. Ronaldo
  */
 public class Report {
-    public static void generateReport(List<Result> results, String filePath){
-        
-    }
-    
     public static void generateReport(Summary summary, String filePath){
         //Cria um Objeto JSON
         

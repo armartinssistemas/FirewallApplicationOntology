@@ -97,7 +97,7 @@ public class Analyzer {
        return analyzers;
     }
     
-    public static Summary analyzerSumary(List<Result> analyzers){
+    public static Summary analyzerSummary(List<Result> analyzers){
         Summary s = new Summary();
         
         for(Result r: analyzers){
