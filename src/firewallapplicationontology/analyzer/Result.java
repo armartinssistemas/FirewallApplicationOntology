@@ -14,14 +14,16 @@ import firewallapplicationontology.domain.Input;
 public class Result {
     private Input input;
     private boolean malicious;
+    private boolean atack;
 
     public Result(){
         
     }
     
-    public Result(Input input, boolean malicious){
+    public Result(Input input, boolean malicious, boolean atack){
         this.input = input;
         this.malicious = malicious;
+        this.atack = atack;
     }
     
     public void setInput(Input input) {
@@ -32,12 +34,22 @@ public class Result {
         this.malicious = malicious;
     }
 
+    public void setAtack(boolean atack) {
+        this.atack = atack;
+    }
+    
+    
+
     public Input getInput() {
         return input;
     }
 
     public boolean isMalicious() {
         return malicious;
+    }
+
+    public boolean isAtack() {
+        return atack;
     }
     
     

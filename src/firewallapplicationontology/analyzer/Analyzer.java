@@ -53,23 +53,26 @@ public class Analyzer {
         for(Input i: inputs){
             System.out.println(""+(++w));
             queryEngine.deleteSWRLRule("var");
+            //Coleta na base ontológica o tipo de padrão baseado no tipo de informação
             String temp = "hasSqlInjection("+i.getApplicationMethod().getTipo()+",?atack) ^"
                    + " regex(?atack,?regx)"
                    + "->sqwrl:select(?regx, ?atack)";
             SQWRLResult result = queryEngine.runSQWRLQuery("var",temp);
-            boolean malicious = false;
+            boolean ismalicious = false;
+            boolean isatack = false;
             while (result.next()){
                 String regex = result.getLiteral(0).getValue();
                 String atack = result.getNamedIndividual(1).getShortName().toString().replace(":", "");
                 ATACKSQL_INJECTION injectatack = ATACKSQL_INJECTION.getATACKSQL_INJECTION(atack);
                 if (injectatack == ATACKSQL_INJECTION.AtackSQLInjectionNumerico){
                     if (!i.getInput().matches(regex)){
-                       malicious = true;
+                       isatack = true;
                     }   
                 }else{
                     Pattern pattern = Pattern.compile(regex);
                     Matcher matcher = pattern.matcher(i.getInput());
                     if (matcher.find()){
+                        ismalicious = true;
                         //Busca Permissões
                         queryEngine.deleteSWRLRule("var");
                         SQWRLResult result2 = queryEngine.runSQWRLQuery("var",
@@ -83,16 +86,16 @@ public class Analyzer {
                             ObjectMySql objBD = null;
                             if (it.hasNext()) objBD = (ObjectMySql) it.next();
                             if (objBD!=null){
-                                malicious = true;  
+                                ismalicious = false;
                                 Iterator itPerm =  objBD.getPermissoes().stream().filter(x->x.equals(perm)).collect(Collectors.toList()).iterator();
                                 if (itPerm.hasNext())
-                                   malicious = true;
+                                   isatack = true;
                             }
                         }
                     }   
                }
            }
-           analyzers.add(new Result(i, malicious));
+           analyzers.add(new Result(i, ismalicious, isatack));
            
        }
        
@@ -106,9 +109,10 @@ public class Analyzer {
             SummaryItem si = s.findSummaryItem(r.getInput().getApplicationMethod());
             if (r.isMalicious()){
                 si.addMalicious();
-            }else{
-                si.addNoMalicious();
+            }else if (r.isAtack()){
+                si.addAtack();
             }
+            si.addAll();
             
             //O problema está aqui, está sempre adicionando
             s.add(si);

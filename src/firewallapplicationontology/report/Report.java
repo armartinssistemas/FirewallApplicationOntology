@@ -35,8 +35,9 @@ public class Report {
 
             JSONObject freq = new JSONObject();
             
-            freq.put("Maliciosos", i.getMalicious());
-            freq.put("Entradas", i.getNomalicious());
+            freq.put("Malicious", i.getMalicious());
+            freq.put("Inputs", i.getAll());
+            freq.put("Atacks", i.getAtack());
             
             jsonObjectMethods.put("freq", freq);
 

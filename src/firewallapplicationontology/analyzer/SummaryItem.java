@@ -14,7 +14,8 @@ import firewallapplicationontology.domain.Method;
 public class SummaryItem {
     private Method method;
     private int malicious;
-    private int nomalicious;
+    private int atack;
+    private int all;
     
     public SummaryItem (Method method){
         this.method = method;
@@ -24,10 +25,14 @@ public class SummaryItem {
         this.malicious++;
     }
     
-    public void addNoMalicious(){
-        this.nomalicious++;
+    public void addAtack(){
+        this.atack++;
     }
 
+    public void addAll(){
+        this.all++;
+    }
+    
     public Method getMethod() {
         return method;
     }
@@ -36,10 +41,14 @@ public class SummaryItem {
         return malicious;
     }
 
-    public int getNomalicious() {
-        return nomalicious;
+    public int getAtack() {
+        return atack;
     }
 
+    public int getAll() {
+        return all;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;
