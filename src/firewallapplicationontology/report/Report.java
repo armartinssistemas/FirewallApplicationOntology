@@ -34,8 +34,10 @@ public class Report {
             jsonObjectMethods.put("State", i.getMethod().getNome());
 
             JSONObject freq = new JSONObject();
-            freq.put("Entradas", i.getNomalicious());
+            
             freq.put("Maliciosos", i.getMalicious());
+            freq.put("Entradas", i.getNomalicious());
+            
             jsonObjectMethods.put("freq", freq);
 
             States.add(jsonObjectMethods);
@@ -45,6 +47,7 @@ public class Report {
         
          
         try{
+            System.out.println(States.toString());
             writeFile = new FileWriter(filePath);
             //Escreve no arquivo conteudo do Objeto JSON
             writeFile.write(States.toJSONString());

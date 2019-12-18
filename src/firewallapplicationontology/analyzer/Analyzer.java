@@ -48,23 +48,25 @@ public class Analyzer {
        List<Result> analyzers = new ArrayList<Result>();
         /**/
        
-       for(Input i: inputs){
-           queryEngine.deleteSWRLRule("var");
-           String temp = "hasSqlInjection("+i.getApplicationMethod().getTipo()+",?atack) ^"
+        System.out.println("Total Analyser: "+inputs.size()); 
+        int w = 0;
+        for(Input i: inputs){
+            System.out.println(""+(++w));
+            queryEngine.deleteSWRLRule("var");
+            String temp = "hasSqlInjection("+i.getApplicationMethod().getTipo()+",?atack) ^"
                    + " regex(?atack,?regx)"
                    + "->sqwrl:select(?regx, ?atack)";
-           SQWRLResult result = queryEngine.runSQWRLQuery("var",temp);
-           boolean malicious = false;
-           while (result.next()){
-               String regex = result.getLiteral(0).getValue();
-               String atack = result.getNamedIndividual(1).getShortName().toString().replace(":", "");
-               ATACKSQL_INJECTION injectatack = ATACKSQL_INJECTION.getATACKSQL_INJECTION(atack);
-               if (injectatack == ATACKSQL_INJECTION.AtackSQLInjectionNumerico){
-                   if (!i.getInput().matches(regex)){
+            SQWRLResult result = queryEngine.runSQWRLQuery("var",temp);
+            boolean malicious = false;
+            while (result.next()){
+                String regex = result.getLiteral(0).getValue();
+                String atack = result.getNamedIndividual(1).getShortName().toString().replace(":", "");
+                ATACKSQL_INJECTION injectatack = ATACKSQL_INJECTION.getATACKSQL_INJECTION(atack);
+                if (injectatack == ATACKSQL_INJECTION.AtackSQLInjectionNumerico){
+                    if (!i.getInput().matches(regex)){
                        malicious = true;
-                   }
-                   
-               }else{
+                    }   
+                }else{
                     Pattern pattern = Pattern.compile(regex);
                     Matcher matcher = pattern.matcher(i.getInput());
                     if (matcher.find()){

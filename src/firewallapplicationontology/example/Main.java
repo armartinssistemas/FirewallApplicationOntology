@@ -55,14 +55,19 @@ public class Main {
         List<ObjectMySql> databaseObjects = MySql.getObjects();
         
         //Recupera métodos existentes da aplicação
-        List<Method> methods = ParserMethods.getInputs("D:\\\\Documentos\\\\Mestrado\\\\InteligenciaArtifical\\\\Ontologia\\\\TrabalhoFinal\\\\methods.xml"); 
+        System.out.println("ParserMethods.getInputs");
+        List<Method> methods = ParserMethods.getInputs("D:\\\\Documentos\\\\Mestrado\\\\InteligenciaArtifical\\\\Ontologia\\\\TrabalhoFinal\\\\methods.xml");
         
         //Recupera métodos e entradas da aplicação WEB
-        List<Input> inputs = ParserInputs.getInputs("D:\\\\Documentos\\\\Mestrado\\\\InteligenciaArtifical\\\\Ontologia\\\\TrabalhoFinal\\\\server.min.log_2019-07-05T16-20-03",
-                                                            methods);
+        List<Input> inputs = ParserInputs.getInputs("D:\\\\Documentos\\\\Mestrado\\\\InteligenciaArtifical\\\\Ontologia\\\\TrabalhoFinal\\\\server.min.log_2019-07-05T16-20-03",methods);
+        System.out.println("ParserInputs.getInputs");
+        //List<Input> inputs = ParserInputs.getInputs("D:\\\\Documentos\\\\Mestrado\\\\InteligenciaArtifical\\\\Ontologia\\\\TrabalhoFinal\\\\server.log_2019-07-05T16-20-03",methods);
         
         //Analiza e retorna Resultado e Resumo
+        System.out.println("Analyzer.analyzerResult");
         List<Result> results = Analyzer.analyzerResult(queryEngine, databaseObjects, inputs, methods);
+        
+        System.out.println("Analyzer.analyzerSummary");
         Summary summary = Analyzer.analyzerSummary(results);
         
         //Gera dados para visualização da informação
