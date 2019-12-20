@@ -22,7 +22,7 @@ public class ParserMethods {
         methods.add(new Method("alterSituacaoOcorrencia", TIPO_METHOD.InputURLVulnerabilityStringImp));//Não
         methods.add(new Method("putDiaTrabalho", TIPO_METHOD.InputURLVulnerabilityStringImp));
         methods.add(new Method("putProjeto", TIPO_METHOD.InputURLVulnerabilityStringImp));
-        methods.add(new Method("putTag", TIPO_METHOD.InputURLVulnerabilityStringImp));
+        methods.add(new Method("putTag", TIPO_METHOD.InputURLVulnerabilityIntegerImp));
         methods.add(new Method("putOcorrencia", TIPO_METHOD.InputURLVulnerabilityStringImp));
         
         return methods;

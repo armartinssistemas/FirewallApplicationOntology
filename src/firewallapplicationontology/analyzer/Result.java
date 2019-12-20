@@ -7,50 +7,37 @@ package firewallapplicationontology.analyzer;
 
 import firewallapplicationontology.domain.Input;
 
-/**
- *
- * @author Prof. Ronaldo
- */
-public class Result {
+public class Result implements Comparable<Result>{
     private Input input;
-    private boolean malicious;
-    private boolean atack;
+    private TypeInput typeInput;
 
     public Result(){
         
     }
     
-    public Result(Input input, boolean malicious, boolean atack){
+    public Result(Input input, TypeInput typeInput){
         this.input = input;
-        this.malicious = malicious;
-        this.atack = atack;
+        this.typeInput = typeInput;
     }
     
     public void setInput(Input input) {
         this.input = input;
     }
 
-    public void setMalicious(boolean malicious) {
-        this.malicious = malicious;
+    public void setTypeInput(TypeInput typeInput) {
+        this.typeInput = typeInput;
     }
 
-    public void setAtack(boolean atack) {
-        this.atack = atack;
+    public TypeInput getTypeInput() {
+        return typeInput;
     }
     
-    
-
     public Input getInput() {
         return input;
     }
 
-    public boolean isMalicious() {
-        return malicious;
+    @Override
+    public int compareTo(Result o) {
+        return this.input.getApplicationMethod().getNome().compareTo(o.getInput().getApplicationMethod().getNome());
     }
-
-    public boolean isAtack() {
-        return atack;
-    }
-    
-    
 }

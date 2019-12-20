@@ -58,21 +58,21 @@ public class Analyzer {
                    + " regex(?atack,?regx)"
                    + "->sqwrl:select(?regx, ?atack)";
             SQWRLResult result = queryEngine.runSQWRLQuery("var",temp);
-            boolean ismalicious = false;
-            boolean isatack = false;
+            TypeInput typeInput = null;
             while (result.next()){
                 String regex = result.getLiteral(0).getValue();
                 String atack = result.getNamedIndividual(1).getShortName().toString().replace(":", "");
                 ATACKSQL_INJECTION injectatack = ATACKSQL_INJECTION.getATACKSQL_INJECTION(atack);
                 if (injectatack == ATACKSQL_INJECTION.AtackSQLInjectionNumerico){
                     if (!i.getInput().matches(regex)){
-                       isatack = true;
-                    }   
+                       typeInput = TypeInput.MALICIOUS;
+                    }else
+                        typeInput = TypeInput.NORMAL;
                 }else{
                     Pattern pattern = Pattern.compile(regex);
                     Matcher matcher = pattern.matcher(i.getInput());
                     if (matcher.find()){
-                        ismalicious = true;
+                        typeInput = TypeInput.MALICIOUS;
                         //Busca Permissões
                         queryEngine.deleteSWRLRule("var");
                         SQWRLResult result2 = queryEngine.runSQWRLQuery("var",
@@ -86,16 +86,18 @@ public class Analyzer {
                             ObjectMySql objBD = null;
                             if (it.hasNext()) objBD = (ObjectMySql) it.next();
                             if (objBD!=null){
-                                ismalicious = false;
+                                typeInput = TypeInput.MALICIOUS;
                                 Iterator itPerm =  objBD.getPermissoes().stream().filter(x->x.equals(perm)).collect(Collectors.toList()).iterator();
                                 if (itPerm.hasNext())
-                                   isatack = true;
+                                   typeInput = TypeInput.ATACK;
                             }
                         }
-                    }   
+                    }else{
+                        typeInput = TypeInput.NORMAL;
+                    }
                }
            }
-           analyzers.add(new Result(i, ismalicious, isatack));
+           analyzers.add(new Result(i, typeInput));
            
        }
        
@@ -107,9 +109,9 @@ public class Analyzer {
         
         for(Result r: analyzers){
             SummaryItem si = s.findSummaryItem(r.getInput().getApplicationMethod());
-            if (r.isMalicious()){
+            if (r.getTypeInput() == TypeInput.MALICIOUS){
                 si.addMalicious();
-            }else if (r.isAtack()){
+            }else if (r.getTypeInput() == TypeInput.ATACK){
                 si.addAtack();
             }
             si.addAll();
